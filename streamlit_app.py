@@ -32,7 +32,7 @@ def main():
             st.write("Result")
             data = fetch(session, f"https://t5-jobdesc-normalize-dnxwuwa5ra-et.a.run.app/getjobdesc" , "{'jobtitle':'{jobtitle}'}")
             if data:
-                st.success(data['jobdesc'])
+                st.success(data)
             else:
                 st.error("Error")
 
