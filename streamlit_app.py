@@ -4,35 +4,37 @@ import math
 import pandas as pd
 import streamlit as st
 import requests
+import json
 
 st.write("""
 # Karir.ai Model Demo
-Ini adalah AI Model demo untuk 'Job Description Generator' dari input 'Job Title' 
+Ini adalah AI Model demo untuk 'Job Description Generator' dari input 'Job Title' text.
+Klik 'Generate' beberapakali untuk menghasilkan deskripsi pekerjaan yang berbeda.
 """)
 
 
-def fetch(session, url, params):
+def fetch(session, url, jobtitle):
     try:
-        result = session.post(url, json=params)
+        result = session.post(url, json={'jobtitle':jobtitle})
         return result.json()
     except Exception:
         return {}
 
 
 def main():
-    #st.set_page_config(page_title="KarirAi Demo App", page_icon="🤖")
-    st.title("KarirAi Demo Only")
     session = requests.Session()
     with st.form("my_form"):
         jobtitle = st.text_input("Masukan Job Title", "Javascript Developer")
 
-        submitted = st.form_submit_button("Submit")
+        submitted = st.form_submit_button("Generate")
 
         if submitted:
             st.write("Result")
-            data = fetch(session, f"https://t5-jobdesc-normalize-dnxwuwa5ra-et.a.run.app/getjobdesc" , "{'jobtitle':'{jobtitle}'}")
+            data = fetch(session, f"https://t5-jobdesc-normalize-dnxwuwa5ra-et.a.run.app/getjobdesc" , jobtitle)
             if data:
-                st.success(data)
+                json_str = json.dumps(data)
+                resp = json.loads(json_str)
+                st.success(resp['jobdesc'])
             else:
                 st.error("Error")
 
