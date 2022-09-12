@@ -20,7 +20,7 @@ def fetch(session, url, params):
 
 
 def main():
-    st.set_page_config(page_title="KarirAi Demo App", page_icon="🤖")
+    #st.set_page_config(page_title="KarirAi Demo App", page_icon="🤖")
     st.title("KarirAi Demo Only")
     session = requests.Session()
     with st.form("my_form"):
