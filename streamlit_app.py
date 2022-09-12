@@ -8,7 +8,7 @@ import json
 
 st.write("""
 # Karir.ai Model Demo
-Ini adalah AI Model demo untuk 'Job Description Generator' dari input 'Job Title' text.
+Ini adalah AI Model demo untuk 'Job Description Generator' dari input 'Job Title' (english) text.
 Klik 'Generate' beberapakali untuk menghasilkan deskripsi pekerjaan yang berbeda.
 """)
 
