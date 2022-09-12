@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 
 st.write("""
-#Karir.ai Model Demo
+# Karir.ai Model Demo
 Ini adalah AI Model demo untuk 'Job Description Generator' dari input 'Job Title' 
 """)
 
